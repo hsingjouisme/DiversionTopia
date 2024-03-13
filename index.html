@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css"> 
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- AOS animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>    
+    <title>Diversion Topia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marhey:wght@600&display=swap');
+
+        .athlete{
+            display: inline-block;
+        }
+
+        @media (max-width:768px) {
+            .container-fluid{
+                grid-template-columns: auto;
+                grid-row: 2;
+                grid-column: 1;
+            }
+            .aside_btn{
+                display: none;
+            }
+            .aside{
+                margin-top: 0px;
+                display: inline-block;
+            }
+            .game_layout{
+                margin-top: -20px;
+            }
+            .game{
+                padding-left: 0px;
+            }
+            .aside_layout{
+                width: 100%;
+                max-width: 500px;
+                position: relative;
+            }
+            .menu_button{
+                position: absolute;
+                right: 0%;
+                top: 0%;
+                box-shadow: 5px 5px 3px #965454;
+            }
+            .logo{
+                font-size: 25px;
+            }
+            .container_pss{
+                grid-template-columns: auto;
+                grid-row: 4;
+                grid-column: 1;
+                margin: 0px auto;
+            }
+            .intro_images{
+                margin: 0px auto;
+            }
+            
+        }
+        @media (min-width:769px) {
+            .menu_button
+            {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!-- 遊戲按鈕選單 -->
+        <div class="aside">
+            <div class="aside_layout">
+                <div class="logo" id="intro_intro" onclick="location.href='index.html';showDiv('_intro')">Diversion Topia</div>
+                <div class="aside_btn" id="aside_memory" onclick="showDiv('_memory');change_bgc(event)">記憶力大考驗</div>
+                <div class="aside_btn" id="aside_code" onclick="showDiv('_code');change_bgc(event)">終極密碼</div>
+                <div class="aside_btn" id="aside_pss" onclick="showDiv('_pss');change_bgc(event)">剪刀石頭布</div>
+                <div class="menu_button"  onclick="showOverlay()">MENU</div>
+            </div>
+        </div>
+        
+        <!-- menu overlay -->
+            <div id="show_overlay">
+                <div class="logo" id="btn_intro" onclick="location.href='index.html';">Diversion Topia</div>
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjmvs2qUQQMnXbFOu6BCcsw3vpcNElFuwG-haSWCu6Kbb27liPl5zWkpnCh1sixw5ve2sA13JErwMRBfrjHry5DPQt4zR7V3uQV-MECREz76zHeCTFxeRiti159VW1f3gPqZdlHQp-dtaq_EVuII8_jCtWxe8xDOh8u37VJ7a3NAhvoPbM3KYPBqlJQiA/s961/eto_usagi_kamifubuki.png">
+                <div class="overlay_layout">
+                    <div class="close_btn" onclick="offOverlay()">close</div>
+                    <div class="menu_btns">
+                        <div class="menu_btn" id="menu_memory" onclick="showDiv('_memory');close_overlay();change_bgc_menu(event)">記憶力大考驗</div>
+                        <div class="menu_btn" id="menu_code" onclick="showDiv('_code');close_overlay();change_bgc_menu(event)">終極密碼</div>
+                        <div class="menu_btn" id="menu_pss" onclick="showDiv('_pss');close_overlay();change_bgc_menu(event)">剪刀石頭布</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+        <!-- 遊戲展示位置 -->
+        <div class="game">
+            <div class="game_layout">
+
+                <!-- intro -->
+                <div id="div_intro" class="hidden">
+                    <div class="title" id="intro_title">WELCOME to  Diversion Topia</div>
+                    <div class="game_info">
+                        <p>你打發時間的理想去處！</p>
+                        <ul>
+                            <li>DiversionTopia 提供簡單有趣的小遊戲，讓你在繁忙生活中找到片刻輕鬆。</li>
+                            <li>DiversionTopia 隨時迎接你的挑戰，沒有繁瑣等待，讓你想玩就玩。</li>
+                        </ul>
+                        快來 DiversionTopia，探索無窮樂趣，在忙碌的生活之餘療癒放鬆一下！
+                        <p>點選上方MENU按鈕或是左側遊戲名稱按鈕，開始你的輕鬆冒險吧！</p>
+                    </div>
+                    <div class="intro_images">
+                        <img src="https://4.bp.blogspot.com/-__yEIXe5SxU/Uab3zO7BB2I/AAAAAAAAUVI/MYg6TVeiv-Y/s800/janken_choki.png">
+                        <img src="https://1.bp.blogspot.com/-WIFLF8Am0VQ/WhUhlkuzHsI/AAAAAAABIMY/Rl1AX4Qay60rWWj4yczpdQ5ygvm_VJpLwCLcBGAs/s800/animal_quiz_usagi_maru.png">
+                        <img src="https://4.bp.blogspot.com/-yf0uqvHNraI/WtRzlznE47I/AAAAAAABLno/j6J43WELDWA1cefM75mhBP4IsX1QZbnRQCLcBGAs/s800/smartphone_smile_boys.png">
+                        <img src="https://3.bp.blogspot.com/-qZtyoue9xKs/Uab30IG0Q5I/AAAAAAAAUVk/qnH8a2OgrvI/s800/janken_pa.png">
+                        <img src="https://2.bp.blogspot.com/-jqLamw3dgp0/WhUhiXh4HNI/AAAAAAABIMA/8Ivntjst6hEq1kwBkE8EBXQnhSzPd7IXwCLcBGAs/s800/animal_quiz_inu_batsu.png">
+                    </div>
+                    
+                </div>
+
+                <!-- 終極密碼 -->
+                <div id="div_code" class="hidden">
+                    <div class="game_info">
+                        <div class="title">終極密碼－遊戲說明</div>
+                        <ol>
+                            <li>
+                                先選擇下方您想要挑戰的關卡：0-100、0-1000、0-10000
+                            </li>
+                            <li>
+                                輸入欄輸入您猜測的數字
+                            </li>
+                            <li>
+                                根據提示內容修正您猜測的數字
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="container_code">
+                        
+                        <div class="level_layout" id="level_layout">
+                            <div class="level" id="level_1" onclick="show_level(this);level_1();restart()">0-100</div>
+                            <div class="level" id="level_2" onclick="show_level(this);level_2();restart()">0-1000</div>
+                            <div class="level" id="level_3" onclick="show_level(this);level_3();restart()">0-10000</div>
+                        </div>
+                        <div class="info_layout" id="info_layout">
+                            <div class="show_btn">
+                                <h4 id="show_level"></h4>
+                            </div>
+                            <div class="user" id="user">
+                                <input type="text" placeholder="請輸入你的答案" id="guess_num">
+                                <button class="enter" onclick="update_count();compare()" id="enter">確定輸入</button>
+                            </div>
+                            <div class="result" id="result"></div>
+                            <h5 id="count"></h5>
+                            <div class="change" id="change" onclick="change()">我想換關卡挑戰</div>
+                            <div class="reset" id="reset" onclick="restart()">重新出題</div>
+                        </div>
+                    </div>  
+                </div>
+
+                <!-- 記憶力大考驗 -->
+                <div id="div_memory" class="hidden">
+                    <div class="container-fliud">
+                        <div class="memory_game">
+                            <h3 class="title">Memory Game</h3>
+                            <div class="game_board"></div>
+                            <button class="reset" onclick="window.location.reload();">Reset Game！</button>
+                        </div> 
+                    </div>
+                </div>
+
+
+                  <!-- pss -->
+                <div id="div_pss" class="hidden">
+                    <div class="container_pss">
+                        <div class="battle">
+                            <div class="athlete">
+                                <div id="computer_gesture">
+                                    <img class="gesture_img" src="https://2.bp.blogspot.com/-VhlO-Yfjy_E/Uab3z3RNJQI/AAAAAAAAUVg/fX8VnSVDlWs/s800/janken_gu.png">
+                                </div>
+                                <div class="name">computer</div>
+                            </div>
+                            <div class="athlete">
+                                <div id="user_gesture">
+                                    <img class="gesture_img" src="https://2.bp.blogspot.com/-VhlO-Yfjy_E/Uab3z3RNJQI/AAAAAAAAUVg/fX8VnSVDlWs/s800/janken_gu.png">
+                                </div>
+                                <div class="name">you</div>
+                            </div>
+                        </div>
+                        <div class="gesture">
+                            <p style="font-size: 20px;margin-top: 10px;">請點選此變換你的拳！</p>
+                            <img class="gesture_img" src="https://2.bp.blogspot.com/-VhlO-Yfjy_E/Uab3z3RNJQI/AAAAAAAAUVg/fX8VnSVDlWs/s800/janken_gu.png" onclick="choice(this)" id="rock">
+                            <img class="gesture_img" src="https://4.bp.blogspot.com/-__yEIXe5SxU/Uab3zO7BB2I/AAAAAAAAUVI/MYg6TVeiv-Y/s800/janken_choki.png" onclick="choice(this)" id="scissor">
+                            <img class="gesture_img" src="https://3.bp.blogspot.com/-qZtyoue9xKs/Uab30IG0Q5I/AAAAAAAAUVk/qnH8a2OgrvI/s800/janken_pa.png" onclick="choice(this)" id="paper">
+                        </div>
+                        <div class="game_ratio">
+                            <div class="ratio_title">目前比數為</div>
+                            <div class="ratio_layout">
+                                <div id="ratio"></div>
+                                <p id="result_match"></p>
+                            </div>
+                        </div>
+                        <div class="restart">
+                            <div class="restart_btn" onclick="restart()">重新遊戲</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="footer fixed-bottom" id="footer">©Hsing Jou Lu 2024</footer>        
+
+    <!-- 套用AOS動畫 -->
+    <script>
+        AOS.init({
+            duration:3000,
+        });
+    </script>
+
+    <script src="index.js"></script>
+</body>
+</html>
